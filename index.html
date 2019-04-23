@@ -5,12 +5,12 @@
   
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link rel="dns-prefetch" href="https://keytoon9.github.io/KeyToon9.github.io">
+  <link rel="dns-prefetch" href="https://keytoon9.github.io/blog">
   <title>KeyToon Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta property="og:type" content="website">
 <meta property="og:title" content="KeyToon Blog">
-<meta property="og:url" content="https://keytoon9.github.io/KeyToon9.github.io/index.html">
+<meta property="og:url" content="https://keytoon9.github.io/blog/index.html">
 <meta property="og:site_name" content="KeyToon Blog">
 <meta property="og:locale" content="default">
 <meta name="twitter:card" content="summary">
@@ -19,7 +19,7 @@
     <link rel="alternative" href="/atom.xml" title="KeyToon Blog" type="application/atom+xml">
   
   
-    <link rel="icon" href="/favicon.png">
+    <link rel="icon" href="/img/favicon.png">
   
   <link rel="stylesheet" type="text/css" href="/keytoon9.github.io/./main.0cf68a.css">
   <style type="text/css">
@@ -176,7 +176,7 @@
       
         <p>2017年特别特殊，随着短视频app走向互联网风口，全民短视频时代似乎来临。此时形如微信公众号的文字自媒体工作者开始不断走向瓶颈，有限的表达形式，冗长乏味的文字模板，都使得以微信公众号为代表的自媒体逐渐流失粉丝，粉丝粘度也不如从前。</p>
 <p>视频自媒体有着丰富的表现形式，更利于运营者拉进与粉丝间的距离。你可以专职做科技产品评测，也可以做虚拟作品吐槽，当然，你也可以带上一个普通的相机，走出门，记录自己有趣的一天，为网友们分享那些有趣的地方和有趣的自己。</p>
-<p><div align="center"><img src="/KeyToon9.github.io/2019/04/23/suibi-1/bili.webp" alt="bilibili"></div></p>
+<p><div align="center"><img src="/blog/2019/04/23/suibi-1/bili.webp" alt="bilibili"></div></p>
 <blockquote>
 <p>B站极大鼓励校园vloger的创作</p>
 </blockquote>
@@ -258,18 +258,18 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><div align="center"><img src="/KeyToon9.github.io/2019/04/23/houdini-1/houdni_banner.jpg" alt="houdini"></div></p>
+        <p><div align="center"><img src="/blog/2019/04/23/houdini-1/houdni_banner.jpg" alt="houdini"></div></p>
 <hr>
 <p>今天尝试着使用vex去创建几何体，在构建过程中想利用vector数组循环添加点来创建。<br><figure class="highlight cpp"><figcaption><span>原代码</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> sideNum = chi(<span class="string">"num_of_sides"</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">float</span> stepRadians = (<span class="number">2.0</span> * $PI) / <span class="keyword">float</span>(sideNum);</span><br><span class="line"><span class="keyword">float</span> x, y;</span><br><span class="line"></span><br><span class="line"><span class="built_in">vector</span> node[];</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; sideNum; i++)&#123;</span><br><span class="line">    x = -<span class="built_in">cos</span>(stepRadians * i);</span><br><span class="line">    y = <span class="built_in">sin</span>(stepRadians * i);</span><br><span class="line"></span><br><span class="line">    append(node, &#123;x, y, <span class="number">0</span>&#125;);</span><br><span class="line">   addpoint(<span class="number">0</span>, node[i]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>最后只会得到：<em>Syntax error, unexpected identifier.</em></p>
 <p>稍微谷歌了一下，得知{}仅适用于数字，不能使用变量。</p>
 <p>对此，我的解决办法是将<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">append(node, &#123;x, y, <span class="number">0</span>&#125;);</span><br></pre></td></tr></table></figure></p>
 <p>改成<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">append(node, <span class="built_in">set</span>(x, y, <span class="number">0</span>));</span><br></pre></td></tr></table></figure></p>
-<p><div align="center"><img src="/KeyToon9.github.io/2019/04/23/houdini-1/doc.jpg" alt="set()解释">**</div></p>
+<p><div align="center"><img src="/blog/2019/04/23/houdini-1/doc.jpg" alt="set()解释">**</div></p>
 <blockquote>
 <p>官方文档对set函数的解释，可以利用set函数返回一个vector数据</p>
 </blockquote>
-<p><div align="center"><img src="/KeyToon9.github.io/2019/04/23/houdini-1/exmple.jpg" alt="结果"></div></p>
+<p><div align="center"><img src="/blog/2019/04/23/houdini-1/exmple.jpg" alt="结果"></div></p>
 <blockquote>
 <p>这样我们便得到了一个可以自定义边数的多边形~</p>
 </blockquote>
