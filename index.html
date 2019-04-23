@@ -66,8 +66,6 @@
     			
             
     			
-    			<a q-on="click: openSlider(e, 'friends')" href="javascript:void(0)">友链</a>
-    			
             
     			
     			<a q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">关于我</a>
@@ -151,6 +149,99 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-houdini-1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/keytoon.github.io/2019/04/23/houdini-1/">Houdini学习之路 - 我在使用VEX遇到坑(1)</a>
+    </h1>
+  
+
+        
+        <a href="/keytoon.github.io/2019/04/23/houdini-1/" class="archive-article-date">
+  	<time datetime="2019-04-23T11:30:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-23</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><div align="center"><img src="/keytoon.github.io/2019/04/23/houdini-1/houdni_banner.jpg" alt="houdini"></div></p>
+<hr>
+<p>今天尝试着使用vex去创建几何体，在构建过程中想利用vector数组循环添加点来创建。<br><figure class="highlight cpp"><figcaption><span>原代码</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> sideNum = chi(<span class="string">"num_of_sides"</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">float</span> stepRadians = (<span class="number">2.0</span> * $PI) / <span class="keyword">float</span>(sideNum);</span><br><span class="line"><span class="keyword">float</span> x, y;</span><br><span class="line"></span><br><span class="line"><span class="built_in">vector</span> node[];</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; sideNum; i++)&#123;</span><br><span class="line">    x = -<span class="built_in">cos</span>(stepRadians * i);</span><br><span class="line">    y = <span class="built_in">sin</span>(stepRadians * i);</span><br><span class="line"></span><br><span class="line">    append(node, &#123;x, y, <span class="number">0</span>&#125;);</span><br><span class="line">   addpoint(<span class="number">0</span>, node[i]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>最后只会得到：<em>Syntax error, unexpected identifier.</em></p>
+<p>稍微谷歌了一下，得知{}仅适用于数字，不能使用变量。</p>
+<p>对此，我的解决办法是将<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">append(node, &#123;x, y, <span class="number">0</span>&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>改成<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">append(node, <span class="built_in">set</span>(x, y, <span class="number">0</span>));</span><br></pre></td></tr></table></figure></p>
+<p><div align="center"><img src="/keytoon.github.io/2019/04/23/houdini-1/doc.jpg" alt="set()解释">**</div></p>
+<blockquote>
+<p>官方文档对set函数的解释，可以利用set函数返回一个vector数据</p>
+</blockquote>
+<p><div align="center"><img src="/keytoon.github.io/2019/04/23/houdini-1/exmple.jpg" alt="结果"></div></p>
+<blockquote>
+<p>这样我们便得到了一个可以自定义边数的多边形~</p>
+</blockquote>
+<p><strong>本人不才，还在缓慢学习中，希望能把自己遇到的困难以及自己想到的解决方法分享给大家！欢迎大家给出更优解！</strong></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">houdini</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vex</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/keytoon.github.io/2019/04/23/houdini-1/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-My-First-Post" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -256,7 +347,7 @@
 		toc_hide_index: true,
 		root: "/keytoon.github.io/",
 		innerArchive: true,
-		showTags: false
+		showTags: true
 	}
 </script>
 
@@ -276,8 +367,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
       
     
       
-      
-      
     
       
       
@@ -289,15 +378,13 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
     
     
       
-      <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
+      <li style="width: 50%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
       
         
       
-      <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'friends')"><a href="javascript:void(0)" q-class="active:friends">友链</a></li>
-      
         
       
-      <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" q-class="active:aboutme">关于我</a></li>
+      <li style="width: 50%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" q-class="active:aboutme">关于我</a></li>
       
         
     </ul>
@@ -319,6 +406,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">first</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">houdini</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">vex</a>
               </li>
             
             <div class="clearfix"></div>
@@ -365,43 +460,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
     
 
     
-    	<section class="tools-section tools-section-friends" q-show="friends">
-  		
-        <ul class="search-ul">
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接1</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接2</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接3</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接4</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接5</a>
-            </li>
-          
-            <li class="search-li">
-              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接6</a>
-            </li>
-          
-        </ul>
-  		
-    	</section>
-    
 
     
     	<section class="tools-section tools-section-me" q-show="aboutme">
   	  	
-  	  		<div class="aboutme-wrap" id="js-aboutme">很惭愧&lt;br&gt;&lt;br&gt;只做了一点微小的工作&lt;br&gt;谢谢大家</div>
+  	  		<div class="aboutme-wrap" id="js-aboutme">梓桐&lt;br&gt;我只是一个&lt;br&gt;不会编程的程序员</div>
   	  	
     	</section>
     
