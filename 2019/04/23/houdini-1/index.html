@@ -5,25 +5,25 @@
   
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link rel="dns-prefetch" href="https://keytoon9.github.io/blog">
+  <link rel="dns-prefetch" href="https://keytoon9.github.io/KeyToon9.github.io">
   <title>Houdini学习之路 - 我在使用VEX遇到坑(1) | KeyToon Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="今天尝试着使用vex去创建几何体，在构建过程中想利用vector数组循环添加点来创建。原代码1234567891011121314int sideNum = chi(&quot;num_of_sides&quot;);float stepRadians = (2.0 * $PI) / float(sideNum);float x, y;vector node[];for(int i = 0; i &amp;lt; sid">
 <meta name="keywords" content="houdini,vex">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Houdini学习之路 - 我在使用VEX遇到坑(1)">
-<meta property="og:url" content="https://keytoon9.github.io/blog/2019/04/23/houdini-1/index.html">
+<meta property="og:url" content="https://keytoon9.github.io/KeyToon9.github.io/2019/04/23/houdini-1/index.html">
 <meta property="og:site_name" content="KeyToon Blog">
 <meta property="og:description" content="今天尝试着使用vex去创建几何体，在构建过程中想利用vector数组循环添加点来创建。原代码1234567891011121314int sideNum = chi(&quot;num_of_sides&quot;);float stepRadians = (2.0 * $PI) / float(sideNum);float x, y;vector node[];for(int i = 0; i &amp;lt; sid">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://keytoon9.github.io/blog/2019/04/23/houdini-1/houdni_banner.jpg">
-<meta property="og:image" content="https://keytoon9.github.io/blog/2019/04/23/houdini-1/doc.jpg">
-<meta property="og:image" content="https://keytoon9.github.io/blog/2019/04/23/houdini-1/exmple.jpg">
+<meta property="og:image" content="https://keytoon9.github.io/KeyToon9.github.io/2019/04/23/houdini-1/houdni_banner.jpg">
+<meta property="og:image" content="https://keytoon9.github.io/KeyToon9.github.io/2019/04/23/houdini-1/doc.jpg">
+<meta property="og:image" content="https://keytoon9.github.io/KeyToon9.github.io/2019/04/23/houdini-1/exmple.jpg">
 <meta property="og:updated_time" content="2019-04-23T11:59:05.710Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Houdini学习之路 - 我在使用VEX遇到坑(1)">
 <meta name="twitter:description" content="今天尝试着使用vex去创建几何体，在构建过程中想利用vector数组循环添加点来创建。原代码1234567891011121314int sideNum = chi(&quot;num_of_sides&quot;);float stepRadians = (2.0 * $PI) / float(sideNum);float x, y;vector node[];for(int i = 0; i &amp;lt; sid">
-<meta name="twitter:image" content="https://keytoon9.github.io/blog/2019/04/23/houdini-1/houdni_banner.jpg">
+<meta name="twitter:image" content="https://keytoon9.github.io/KeyToon9.github.io/2019/04/23/houdini-1/houdni_banner.jpg">
   
     <link rel="alternative" href="/atom.xml" title="KeyToon Blog" type="application/atom+xml">
   
@@ -181,18 +181,18 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p><div align="center"><img src="/blog/2019/04/23/houdini-1/houdni_banner.jpg" alt="houdini"></div></p>
+        <p><div align="center"><img src="/KeyToon9.github.io/2019/04/23/houdini-1/houdni_banner.jpg" alt="houdini"></div></p>
 <hr>
 <p>今天尝试着使用vex去创建几何体，在构建过程中想利用vector数组循环添加点来创建。<br><figure class="highlight cpp"><figcaption><span>原代码</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> sideNum = chi(<span class="string">"num_of_sides"</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">float</span> stepRadians = (<span class="number">2.0</span> * $PI) / <span class="keyword">float</span>(sideNum);</span><br><span class="line"><span class="keyword">float</span> x, y;</span><br><span class="line"></span><br><span class="line"><span class="built_in">vector</span> node[];</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; sideNum; i++)&#123;</span><br><span class="line">    x = -<span class="built_in">cos</span>(stepRadians * i);</span><br><span class="line">    y = <span class="built_in">sin</span>(stepRadians * i);</span><br><span class="line"></span><br><span class="line">    append(node, &#123;x, y, <span class="number">0</span>&#125;);</span><br><span class="line">   addpoint(<span class="number">0</span>, node[i]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>最后只会得到：<em>Syntax error, unexpected identifier.</em></p>
 <p>稍微谷歌了一下，得知{}仅适用于数字，不能使用变量。</p>
 <p>对此，我的解决办法是将<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">append(node, &#123;x, y, <span class="number">0</span>&#125;);</span><br></pre></td></tr></table></figure></p>
 <p>改成<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">append(node, <span class="built_in">set</span>(x, y, <span class="number">0</span>));</span><br></pre></td></tr></table></figure></p>
-<p><div align="center"><img src="/blog/2019/04/23/houdini-1/doc.jpg" alt="set()解释">**</div></p>
+<p><div align="center"><img src="/KeyToon9.github.io/2019/04/23/houdini-1/doc.jpg" alt="set()解释">**</div></p>
 <blockquote>
 <p>官方文档对set函数的解释，可以利用set函数返回一个vector数据</p>
 </blockquote>
-<p><div align="center"><img src="/blog/2019/04/23/houdini-1/exmple.jpg" alt="结果"></div></p>
+<p><div align="center"><img src="/KeyToon9.github.io/2019/04/23/houdini-1/exmple.jpg" alt="结果"></div></p>
 <blockquote>
 <p>这样我们便得到了一个可以自定义边数的多边形~</p>
 </blockquote>
@@ -291,7 +291,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://keytoon9.github.io/blog/2019/04/23/houdini-1/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=https://keytoon9.github.io/KeyToon9.github.io/2019/04/23/houdini-1/" alt="微信分享二维码">
     </div>
 </div>
 
