@@ -154,6 +154,95 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-winCode-1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/keytoon9.github.io/2019/04/27/winCode-1/">VS2019更新了，我却碰到一个坑！</a>
+    </h1>
+  
+
+        
+        <a href="/keytoon9.github.io/2019/04/27/winCode-1/" class="archive-article-date">
+  	<time datetime="2019-04-27T08:23:29.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-27</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>就在今天我打开前几天更新好的VS准备学习一下C++窗体编程，在首次编译却发现了如下错误！</p>
+<blockquote>
+<p>error LNK1120: 1 个无法解析的外部命令</p>
+</blockquote>
+<p>嗯？！这是什么情况？</p>
+<p>我们回顾一下案发过程：<br>打开VS 2019，选择<strong>C++</strong>语言，创建一个<strong>空项目</strong>，<del>熟练地</del>敲下入口函数，<em>return 0;</em>编译，运行。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;Windows.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> APIENTRY <span class="title">wWinMain</span><span class="params">(_In_ HINSTANCE hInstance,</span></span></span><br><span class="line"><span class="function"><span class="params">    _In_opt_ HINSTANCE hPrevInstance,</span></span></span><br><span class="line"><span class="function"><span class="params">    _In_ LPWSTR lpCmdLine,</span></span></span><br><span class="line"><span class="function"><span class="params">    _In_ <span class="keyword">int</span> nCmdShow)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>到底哪里错了呢？</p>
+<p>这时我才想起来VS 2019在创建空项目时跳过了一个重要的步骤，这将影响到窗体程序的编译。</p>
+<p>打开项目的项目属性，找到<strong>链接器</strong>，点击<strong>系统</strong>，我们发现项目的默认<strong>子系统</strong>是<strong>控制台(/SUBSYSTEM:CONSOLE)</strong>，这正是造成该错误的元凶！我们将它改为<strong>窗口(/SUBSYSTEM:WINDOWS)</strong></p>
+<p><div align="center"><img src="/keytoon9.github.io/2019/04/27/winCode-1/setting.png" alt="属性"></div></p>
+<p>再次点击运行，编译通过，OK！</p>
+<p>2019版本之前，创建空项目时可以修改应用类型，即控制台还是窗口，2019创建空项目直接默认为控制台，简化了创建项目的选项。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">窗体编程</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/keytoon9.github.io/2019/04/27/winCode-1/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-snake-1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -548,6 +637,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">first</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">houdini</a>
               </li>
              
@@ -556,15 +649,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">C++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">窗体编程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">链表</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">随笔</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">first</a>
               </li>
             
             <div class="clearfix"></div>
