@@ -18,7 +18,7 @@
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://keytoon9.github.io/keytoon9.github.io/2020/02/01/raspi-1/nas-1.jpg">
 <meta property="og:image" content="https://keytoon9.github.io/keytoon9.github.io/2020/02/01/raspi-1/nas-2.jpg">
-<meta property="og:updated_time" content="2020-02-01T09:00:50.373Z">
+<meta property="og:updated_time" content="2020-02-01T09:02:49.144Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="树莓派折腾记1-samba的安装与坑">
 <meta name="twitter:description" content="树莓派买回来已有半个月之久，期间在系统方面上捣鼓太久。本人的机型是4B 2G，系统为官方Lite系统。在逐渐配置好适合我本人的开发环境后，我开始捣鼓samba软件，因为树莓派在3B以前被大家说性能羸弱，难以胜任家用NAS主机一职，而如今4B也有了4G版，性能不比大部分3、4百元的NAS主机差。">
@@ -187,7 +187,7 @@
 <p>简单修改samba配置文件：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo vim /etc/samba/smb.conf</span><br></pre></td></tr></table></figure></p>
 <p>末尾添加以下配置：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[share]</span><br><span class="line">    comment = share</span><br><span class="line">    path = /home/pi/public</span><br><span class="line">    browseable = yes</span><br><span class="line">    read only = yes</span><br><span class="line">    writable = no</span><br><span class="line">    guest ok = yes</span><br></pre></td></tr></table></figure></p>
 <p>其中[share]表示在公开网络中显示的文件夹名称，path为共享文件夹路径，browseable是否可以浏览文件夹，read only是否只读，writable是否可写，guest ok是否匿名访问。以上配置则创建了一个允许匿名访问的只读共享文件夹。</p>
-<p>重启samba服务<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo service smaba restart</span><br></pre></td></tr></table></figure></p>
+<p>重启samba服务<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo service samba restart</span><br></pre></td></tr></table></figure></p>
 <p>这样我们就可以在同一局域网中查看到树莓派并访问share文件夹。</p>
 <div align="center"><img src="/keytoon9.github.io/2020/02/01/raspi-1/nas-1.jpg" alt="结果"></div>
 
@@ -408,11 +408,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">三维扫描</a>
+                <a href="javascript:void(0)" class="js-tag color1">first</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">first</a>
+                <a href="javascript:void(0)" class="js-tag color5">三维扫描</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -428,6 +428,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">树莓派</a>
               </li>
              
@@ -436,7 +440,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" class="js-tag color4">C++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">窗体编程</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -449,14 +457,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">vscode</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">C++</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">窗体编程</a>
               </li>
             
             <div class="clearfix"></div>
